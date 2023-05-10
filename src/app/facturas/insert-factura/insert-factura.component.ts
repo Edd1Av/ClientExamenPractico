@@ -8,6 +8,7 @@ import { Usuario } from 'src/app/models/Usuario';
 import { AuthorizeService } from 'src/app/services/authorize.service';
 import { FacturasService } from 'src/app/services/facturas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 
 @Component({
   selector: 'app-insert-factura',
@@ -55,8 +56,8 @@ export class InsertFacturaComponent implements OnInit {
       id_usuario: new FormControl("", Validators.required),
       folio: new FormControl("", Validators.required),
       saldo: new FormControl("", Validators.required),
-      fecha_facturacion: new FormControl(Date.now),
-      fecha_creacion: new FormControl(Date.now)
+      fecha_Facturacion: new FormControl(),
+      //fecha_Creacion: new FormControl(Date.now)
     });
   }
 

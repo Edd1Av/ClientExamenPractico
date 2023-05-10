@@ -37,7 +37,7 @@
       <section>
         <div>
           <table mat-table [dataSource]="dataSource" class="cat-tbl-search">
-  
+          
             <ng-container matColumnDef="cliente">
               <th class="columna" style="width: 18%;" mat-header-cell *matHeaderCellDef> Cliente </th>
               <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.usuario.nombre}} {{element.usuario.apellido}} </td>
