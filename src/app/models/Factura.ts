@@ -5,8 +5,8 @@ export interface Factura{
     id_usuario:number;
     folio:string;
     saldo:number;
-    fecha_facturacion:Date;
-    fecha_creacion:Date;
+    fecha_Facturacion:Date;
+    fecha_Creacion:Date;
     usuario:Usuario;
 }
 

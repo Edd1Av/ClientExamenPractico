@@ -40,7 +40,7 @@
   
             <ng-container matColumnDef="cliente">
               <th class="columna" style="width: 18%;" mat-header-cell *matHeaderCellDef> Cliente </th>
-              <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.usuario.nombre}} </td>
+              <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.usuario.nombre}} {{element.usuario.apellido}} </td>
             </ng-container>
 
             <ng-container matColumnDef="folio">
@@ -53,25 +53,15 @@
               <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.saldo}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="correo_electronico">
-              <th class="columna" style="width: 18%;" mat-header-cell *matHeaderCellDef> Correo Electrónico </th>
-              <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.correo_electronico}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="fecha_facturacion">
+            <ng-container matColumnDef="fecha_Facturacion">
                 <th class="columna" style="width: 18%;" mat-header-cell *matHeaderCellDef> Fecha facturación</th>
-                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_creacion}} </td>
+                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_Facturacion}} </td>
               </ng-container>
 
-              <ng-container matColumnDef="fecha_creacion">
+              <ng-container matColumnDef="fecha_Creacion">
                 <th class="columna" style="width: 18%;" mat-header-cell *matHeaderCellDef> Fecha Creación </th>
-                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_creacion}} </td>
+                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_Creacion}} </td>
               </ng-container>
-
-            <!-- <ng-container matColumnDef="">
-              <th class="columna" style="width: 16%;" mat-header-cell *matHeaderCellDef> Clave Odoo </th>
-              <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.id_Odoo}} </td>
-            </ng-container> -->
   
             <ng-container  matColumnDef="acciones">
               <th class="columna" style="width: 12%;" mat-header-cell *matHeaderCellDef> Acciones </th>

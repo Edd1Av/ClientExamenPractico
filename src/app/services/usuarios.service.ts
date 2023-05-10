@@ -23,7 +23,7 @@ export class UsuariosService {
 
   SetCliente(cliente:Usuario)  {
     //cliente.user=User;
-      cliente.tipo_usuario=ETipoUsuario.CLIENTE;
+      cliente.tipo_Usuario=ETipoUsuario.CLIENTE;
       return this.http.post<Response>(this.urlBase + "api/Usuario",cliente);
     }
 

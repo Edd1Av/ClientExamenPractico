@@ -40,7 +40,7 @@ export class InsertClienteComponent implements OnInit {
       nombre: new FormControl("", Validators.required),
       apellido: new FormControl("", Validators.required),
       edad: new FormControl("", Validators.required),
-      correo_electronico: new FormControl("", Validators.required),
+      correo_Electronico: new FormControl("", Validators.required),
       //tipo_Usuario: new FormControl("", Validators.required)
     });
   }

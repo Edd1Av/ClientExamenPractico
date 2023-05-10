@@ -27,9 +27,8 @@ displayedColumns: string[] = [
   "cliente",
   "folio",
   "saldo",
-  "correo_electronico",
-  "fecha_facturacion",
-  "fecha_creacion",
+  "fecha_Facturacion",
+  "fecha_Creacion",
   "acciones"
 ];
 
@@ -79,6 +78,7 @@ actualizarHistorico() {
         console.log(this.facturas);
         this.dataSource = new MatTableDataSource<Factura>(this.facturas);
         this.dataSource.paginator = this.paginator;
+        console.log(this.facturas);
       })
     )
     .subscribe();

@@ -6,8 +6,8 @@ export interface Usuario
     nombre: string;
     apellido: string; 
     edad: number;
-    correo_electronico: string; 
-    tipo_usuario: number; 
+    correo_Electronico: string; 
+    tipo_Usuario: number; 
     Facturas:Factura[];
 }
 
