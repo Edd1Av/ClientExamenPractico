@@ -70,32 +70,15 @@ ngOnInit(): void {
 
 actualizarHistorico() {
 
-  // this.usuariosService.getClientes().subscribe((result)=>{
-  //   if (result) {
-  //     this.clientes = result;
-  //       console.log(this.clientes);
-  //       this.dataSource = new MatTableDataSource<Usuario>(this.clientes);
-  //       this.dataSource.paginator = this.paginator;
-  //   } else {
-  //     this.openSnackBar("Error");
-  //   }
-  // });
-
-  this.usuariosService
-    .getClientes()
-    .pipe(
-      tap((result) => {
-        this.clientes = result;
-        console.log(this.clientes);
+  this.usuariosService.getClientes().subscribe((result)=>{
+    if (result) {
+      this.clientes = result;
         this.dataSource = new MatTableDataSource<Usuario>(this.clientes);
         this.dataSource.paginator = this.paginator;
-        // this.dataSource.filterPredicate = (data, filter: string) => {
-        //   return (data.Apellidos.trim().toUpperCase().includes(filter.trim().toUpperCase()));
-        //  };
-      })
-    )
-    .subscribe();
-
+    } else {
+      this.openSnackBar("Error");
+    }
+  });
 }
 
 private buildForm() {

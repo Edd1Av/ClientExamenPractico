@@ -72,41 +72,20 @@ ngOnInit(): void {
 
 
 actualizarHistorico() {
-
-  // this.usuariosService.getClientes().subscribe((result)=>{
-  //   if (result) {
-  //     this.clientes = result;
-  //       console.log(this.clientes);
-  //       this.dataSource = new MatTableDataSource<Usuario>(this.clientes);
-  //       this.dataSource.paginator = this.paginator;
-  //   } else {
-  //     this.openSnackBar("Error");
-  //   }
-  // });
-
-  this.facturasService
-    .getFacturas()
-    .pipe(
-      tap((result) => {
-        console.log("FACTURAS",result);
-        console.log("USUARIO",this.User);
-        if(this.isClient){
-          this.facturas = result.filter(x=>x.id_Usuario==this.User.idUsuario);
-          console.log("FACTURAS",result);
-        }
-        else{
-          this.facturas=result;
-        }
-        
-        console.log(this.facturas);
-
-        this.dataSource = new MatTableDataSource<Factura>(this.facturas);
-        this.dataSource.paginator = this.paginator;
-        console.log(this.facturas);
-      })
-    )
-    .subscribe();
-
+  this.facturasService.getFacturas().subscribe((result)=>{
+    if (result) {
+      if(this.isClient){
+        this.facturas = result.filter(x=>x.id_Usuario==this.User.idUsuario);
+      }
+      else{
+        this.facturas=result;
+      }
+      this.dataSource = new MatTableDataSource<Factura>(this.facturas);
+      this.dataSource.paginator = this.paginator;
+    } else {
+      this.openSnackBar("Error");
+    }
+  });
 }
 
 private buildForm() {

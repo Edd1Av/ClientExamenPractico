@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     if(this.formGroup.valid){
       this.authorizeService.Login(this.formGroup.value).subscribe(result=> {
-        console.log(result);
         if (result.success == true){
           if(result.rolId==ETipoUsuario.ADMINISTRADOR || result.rolId==ETipoUsuario.GERENTE || result.rolId==ETipoUsuario.CLIENTE){
             this.router.navigate(["/home"]);

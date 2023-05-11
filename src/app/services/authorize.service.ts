@@ -38,10 +38,7 @@ export class AuthorizeService {
       let user:LocalStorage = this.changeLoginStatusSubject.value;
       let now:Date = new Date();
       let exp:Date = new Date(user.expiration);
-      console.log("Ahora",now);
-      console.log("Expiración", exp);
       if(now > exp){
-        console.log("DEBE SALIR")
         this.logout();
       }
     }
