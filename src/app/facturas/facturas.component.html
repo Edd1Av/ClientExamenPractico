@@ -8,7 +8,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-md-6 d-flex justify-content-end">
+      <div *ngIf="isAdmin || isGerente" class="col-md-6 d-flex justify-content-end">
         <button class="cat-btn-create" mat-raised-button (click)="openDialogInsert()">
           <span class="material-icons" aria-hidden="false">
             add
@@ -63,10 +63,10 @@
                 <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_Creacion}} </td>
               </ng-container>
   
-            <ng-container  matColumnDef="acciones">
+            <ng-container   matColumnDef="acciones">
               <th class="columna" style="width: 12%;" mat-header-cell *matHeaderCellDef> Acciones </th>
               <td mat-cell *matCellDef="let element">
-                <div>
+                <div *ngIf="isAdmin">
                   <button mat-icon-button color="warn" matTooltip="Eliminar" class="" alt="Eliminar" (click)="mostrarDialogo(element.id)"><mat-icon>delete</mat-icon></button>
                 </div>
               </td>

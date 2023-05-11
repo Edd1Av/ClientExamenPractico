@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
       this.authorizeService.Login(this.formGroup.value).subscribe(result=> {
         console.log(result);
         if (result.success == true){
-          if(result.rolId==ETipoUsuario.ADMINISTRADOR || result.rolId==ETipoUsuario.GERENTE){
-            console.log("es admin ir a home");
+          if(result.rolId==ETipoUsuario.ADMINISTRADOR || result.rolId==ETipoUsuario.GERENTE || result.rolId==ETipoUsuario.CLIENTE){
             this.router.navigate(["/home"]);
           }
         }

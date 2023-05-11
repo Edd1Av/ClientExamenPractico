@@ -12,6 +12,7 @@ import { tap } from 'rxjs';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { LoginComponent } from '../login/login.component';
 import { InsertClienteComponent } from './insert-cliente/insert-cliente.component';
+import { ETipoUsuario } from '../enums/tipo_usuario.enum';
 
 @Component({
   selector: 'app-usuarios',
@@ -43,15 +44,27 @@ constructor(private usuariosService: UsuariosService,
   clientes: Usuario[]=[];
   dataSource!: MatTableDataSource<Usuario>;
   formGroup: any;
-  
+  isAdmin:Boolean=false;
+  isGerente:Boolean=false;
+  isClient:Boolean=false;
 
 ngOnInit(): void {
+  if(this.authService.usuarioData!=null){
+    this.User=this.authService.usuarioData;
+    if(this.User.rolId==ETipoUsuario.ADMINISTRADOR){
+      this.isAdmin=true;
+    }
+    else if(this.User.rolId==ETipoUsuario.GERENTE){
+      this.isGerente=true;
+    }
+    else if(this.User.rolId==ETipoUsuario.CLIENTE){
+      this.isClient=true;
+    }
+  }
+
   this.actualizarHistorico();
   this.buildForm();
   this.initializeFormGroup();
-  if(this.authService.usuarioData!=null){
-    this.User=this.authService.usuarioData;
-  }
 }
 
 

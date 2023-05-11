@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LocalStorage } from '../models/LocalStorage';
 import { AuthorizeService } from '../services/authorize.service';
+import { ETipoUsuario } from '../enums/tipo_usuario.enum';
 
 @Component({
   selector: 'app-layout',
@@ -21,28 +22,26 @@ export class LayoutComponent implements OnInit {
   email:string;
   usuarioLoggeado:Boolean;
   isAdmin:Boolean=false;
-  isDevelop:Boolean=false;
+  isGerente:Boolean=false;
+  isClient:Boolean=false;
   isNotRoot:Boolean;
   ngOnInit(): void {
     this.usuarioLoggeado = this.authService.isLogged();
     if(this.authService.usuarioData!=null){
       this.usuario=this.authService.usuarioData;
       this.email = this.usuario.correo;
-      if(this.usuario.rol=="Administrador"){
+      if(this.usuario.rolId==ETipoUsuario.ADMINISTRADOR){
         this.isAdmin=true;
-        this.isDevelop=false;
       }
-      else if(this.usuario.rol=="Desarrollador"){
-        this.isAdmin=false;
-        this.isDevelop=true;
+      else if(this.usuario.rolId==ETipoUsuario.GERENTE){
+        this.isGerente=true;
       }
-      else{
-        this.isAdmin=false;
-        this.isDevelop=false;
+      else if(this.usuario.rolId==ETipoUsuario.CLIENTE){
+        this.isClient=true;
       }
     }
 
-    if(this.email == "admin@admin.com"){
+    if(this.usuario.idUsuario == 0){
       this.isNotRoot = false;
     }
     else{
@@ -54,34 +53,4 @@ export class LayoutComponent implements OnInit {
   salir(){
     this.authService.logout();
   }
-
-  // openDialog(): void {
-  //   let dialog = this.dialog.open(ChangePasswordComponent, {
-  //     width: "500px",
-  //     disableClose: true,
-  //   });
-  //   dialog.afterClosed().subscribe((result) => {
-      
-  //   });
-  // }
-
-  // openDialogAdmin(): void {
-  //   let dialog = this.dialog.open(AddAdministradorComponent, {
-  //     width: "400px",
-  //     disableClose: true,
-  //   });
-  //   dialog.afterClosed().subscribe((result) => {
-      
-  //   });
-  // }
-
-  // openDialogDeleteAdmin(): void {
-  //   let dialog = this.dialog.open(DeleteAdministradorComponent, {
-  //     width: "400px",
-  //     disableClose: true,
-  //   });
-  //   dialog.afterClosed().subscribe((result) => {
-      
-  //   });
-  // }
 }

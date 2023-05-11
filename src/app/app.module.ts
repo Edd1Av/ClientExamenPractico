@@ -16,7 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTableModule,} from "@angular/material/table";
-import { AuthorizeInterceptor } from './login/login.interceptor';
+import { AuthorizeInterceptor } from './login.interceptor';
 import { AdministradorGuard } from './guards/administrador.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';

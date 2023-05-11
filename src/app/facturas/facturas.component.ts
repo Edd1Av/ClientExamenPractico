@@ -13,6 +13,7 @@ import { IDelete } from '../models/Usuario';
 import { ConfirmComponent } from '../confirm/confirm.component';
 import { InsertClienteComponent } from '../usuarios/insert-cliente/insert-cliente.component';
 import { InsertFacturaComponent } from './insert-factura/insert-factura.component';
+import { ETipoUsuario } from '../enums/tipo_usuario.enum';
 
 @Component({
   selector: 'app-facturas',
@@ -37,7 +38,7 @@ constructor(private facturasService: FacturasService,
   private dialog: MatDialog,
   private formBuilder: FormBuilder,
   private authService: AuthorizeService,
-  private snackBar: MatSnackBar
+  private snackBar: MatSnackBar,
   ) {
    
   }
@@ -45,15 +46,28 @@ constructor(private facturasService: FacturasService,
   facturas: Factura[]=[];
   dataSource!: MatTableDataSource<Factura>;
   formGroup: any;
-  
+  isAdmin:Boolean=false;
+  isGerente:Boolean=false;
+  isClient:Boolean=false;
 
 ngOnInit(): void {
+  if(this.authService.usuarioData!=null){
+    this.User=this.authService.usuarioData;
+    if(this.User.rolId==ETipoUsuario.ADMINISTRADOR){
+      this.isAdmin=true;
+    }
+    else if(this.User.rolId==ETipoUsuario.GERENTE){
+      this.isGerente=true;
+    }
+    else if(this.User.rolId==ETipoUsuario.CLIENTE){
+      this.isClient=true;
+    }
+  }
+
   this.actualizarHistorico();
   this.buildForm();
   this.initializeFormGroup();
-  if(this.authService.usuarioData!=null){
-    this.User=this.authService.usuarioData;
-  }
+
 }
 
 
@@ -74,8 +88,18 @@ actualizarHistorico() {
     .getFacturas()
     .pipe(
       tap((result) => {
-        this.facturas = result;
+        console.log("FACTURAS",result);
+        console.log("USUARIO",this.User);
+        if(this.isClient){
+          this.facturas = result.filter(x=>x.id_Usuario==this.User.idUsuario);
+          console.log("FACTURAS",result);
+        }
+        else{
+          this.facturas=result;
+        }
+        
         console.log(this.facturas);
+
         this.dataSource = new MatTableDataSource<Factura>(this.facturas);
         this.dataSource.paginator = this.paginator;
         console.log(this.facturas);

@@ -17,16 +17,17 @@ export class AdministradorGuard implements CanActivate {
     
       let user = this.authorize.isLoggedIn()
       if(user){
-        if (user.rolId==ETipoUsuario.ADMINISTRADOR){
-          return true;
-        }
-        else if(user.rolId==ETipoUsuario.GERENTE){
-          return true;
-        }
-        else{
-          this.router.navigate(['/Usuarios']);
-          return false;
-        }
+        // if (user.rolId==ETipoUsuario.ADMINISTRADOR){
+        //   return true;
+        // }
+        // else if(user.rolId==ETipoUsuario.GERENTE){
+        //   return true;
+        // }
+        // else{
+        //   this.router.navigate(['/Usuarios']);
+        //   return false;
+        // }
+        return true;
       }
       this.router.navigate(['/login']);
       return false;
