@@ -42,7 +42,7 @@ export class InsertClienteComponent implements OnInit {
       edad: new FormControl("", Validators.required),
       correo_Electronico: new FormControl("", Validators.required),
       //tipo_Usuario: new FormControl("", Validators.required)
-    });
+    }); 
   }
 
   openSnackBar(message:string) {

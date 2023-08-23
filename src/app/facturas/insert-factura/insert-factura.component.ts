@@ -56,7 +56,7 @@ export class InsertFacturaComponent implements OnInit {
       id_usuario: new FormControl("", Validators.required),
       folio: new FormControl("", Validators.required),
       saldo: new FormControl("", Validators.required),
-      fecha_Facturacion: new FormControl(),
+      fecha_Facturacion: new FormControl()
       //fecha_Creacion: new FormControl(Date.now)
     });
   }
