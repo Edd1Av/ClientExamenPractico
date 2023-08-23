@@ -55,12 +55,12 @@
 
             <ng-container matColumnDef="fecha_Facturacion">
                 <th class="columna" style="width: 18%;" mat-header-cell *matHeaderCellDef> Fecha facturación</th>
-                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_Facturacion}} </td>
+                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_Facturacion | date :'dd/MM/yyy'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="fecha_Creacion">
                 <th class="columna" style="width: 18%;" mat-header-cell *matHeaderCellDef> Fecha Creación </th>
-                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_Creacion}} </td>
+                <td class='has_label_on_mobile' data-label='Nombre: '  mat-cell *matCellDef="let element"> {{element.fecha_Creacion | date :'dd/MM/yyyy'}} </td>
               </ng-container>
   
             <ng-container   matColumnDef="acciones">

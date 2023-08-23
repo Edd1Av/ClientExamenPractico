@@ -123,7 +123,7 @@ mostrarDialogo(id:number): void {
   }
   this.dialog
     .open(ConfirmComponent, {
-      data: `¿Está seguro de eliminar a este cliente?`,
+      data: `¿Está seguro de eliminar esta factura?`,
     })
     .afterClosed()
     .subscribe((confirmado: Boolean) => {
